@@ -8,6 +8,7 @@
 #include <glm/gtc/quaternion.hpp>
 #include "Component.h"
 #include "App.h"
+#include "IdHolder.h"
 
 class Component;
 class Hierarchy;
@@ -16,15 +17,13 @@ class App;
 template <typename T>
 class TypedComponent;
 
-class BaseObject
+class BaseObject : public IdHolder
 {
 	// For the top object to set it's selfRef, directly controlled by Hierarchy.
 	friend Hierarchy;
 private:
 	BaseObject(const BaseObject&) = delete;
 	BaseObject& operator=(const BaseObject&) = delete;
-
-	int guid;
 
 	// The weak pointer from it's parent's pointer pointing this object.
 	std::weak_ptr<BaseObject> selfRef;
@@ -47,7 +46,6 @@ private:
 public:
 
 	BaseObject(std::weak_ptr<BaseObject>);
-	BaseObject(std::weak_ptr<BaseObject>, int);
 
 	~BaseObject();
 
@@ -55,8 +53,6 @@ public:
 	/// Compares it's guid only.
 	/// </summary>
 	bool operator==(BaseObject&);
-
-	int GetGuid();
 
 	std::weak_ptr<BaseObject> GetSelfReference();
 

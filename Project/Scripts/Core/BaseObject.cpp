@@ -4,14 +4,9 @@
 #include "App.h"
 #include "Rotation.h"
 
-BaseObject::BaseObject(std::weak_ptr<BaseObject> parent) : BaseObject(parent, rand())
-{
-}
-
-BaseObject::BaseObject(std::weak_ptr<BaseObject> parent, int guid)
+BaseObject::BaseObject(std::weak_ptr<BaseObject> parent)
 {
 	this->parent = parent;
-	this->guid = guid;
 
 	isTransformChanged = true;
 
@@ -29,12 +24,7 @@ BaseObject::~BaseObject()
 
 bool BaseObject::operator==(BaseObject& other)
 {
-	return guid == other.guid;
-}
-
-int BaseObject::GetGuid()
-{
-	return guid;
+	return GetId() == other.GetId();
 }
 
 std::weak_ptr<BaseObject> BaseObject::GetSelfReference()
@@ -73,7 +63,7 @@ void BaseObject::AddChild(std::shared_ptr<BaseObject> childObj)
 			size_t i;
 			for (i = 0; i < siblings.size(); i++)
 			{
-				if (childObj->guid != siblings[i]->guid) continue;
+				if (childObj->GetId() != siblings[i]->GetId()) continue;
 				break;
 			}
 

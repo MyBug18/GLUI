@@ -1,15 +1,15 @@
 #pragma once
-#include <cstdlib>
 #include <string>
 #include <iostream>
 #include "BaseObject.h"
+#include "IdHolder.h"
 
 class BaseObject;
 
 /// <summary>
 /// Components will be watched by shared_ptr from it's holder BaseObject, and will be only exposed as weak_ptr.
 /// </summary>
-class Component
+class Component : public virtual IdHolder
 {
 	friend BaseObject;
 private:
@@ -17,7 +17,6 @@ private:
 	Component& operator=(const Component&) = delete;
 	Component() = delete;
 
-	int guid;
 	bool enabled;
 
 	virtual void OnEnableChanged(bool) { }
@@ -37,7 +36,6 @@ protected:
 
 	Component(std::weak_ptr<BaseObject> holder)
 	{
-		guid = rand();
 		enabled = true;
 		this->holder = holder;
 	}
@@ -60,11 +58,6 @@ public:
 	std::weak_ptr<BaseObject> GetHolder()
 	{
 		return holder;
-	}
-
-	int GetGuid()
-	{
-		return guid;
 	}
 };
 

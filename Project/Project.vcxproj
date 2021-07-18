@@ -163,6 +163,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scripts\Core\Mesh.cpp" />
     <ClCompile Include="Scripts\Components\RandomMesh.cpp" />
+    <ClCompile Include="Scripts\Core\RandomManager.cpp" />
     <ClCompile Include="Scripts\Core\Rotation.cpp" />
     <ClCompile Include="Scripts\Core\App.cpp" />
     <ClCompile Include="Scripts\Core\WindowHolder.cpp" />
@@ -177,6 +178,8 @@
     <ClInclude Include="Scripts\Components\SquareMesh.h" />
     <ClInclude Include="Scripts\Core\App.h" />
     <ClInclude Include="Scripts\Core\Component.h" />
+    <ClInclude Include="Scripts\Core\IdHolder.h" />
+    <ClInclude Include="Scripts\Core\RandomManager.h" />
     <ClInclude Include="Scripts\Core\Hierarchy.h" />
     <ClInclude Include="Scripts\Core\GLShaderHolder.h" />
     <ClInclude Include="Scripts\Core\Logger.h" />
