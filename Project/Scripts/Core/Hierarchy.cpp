@@ -1,5 +1,4 @@
 #include "Hierarchy.h"
-#include "Camera.h"
 #include "GLShaderHolder.h"
 #include "Mesh.h"
 
@@ -16,10 +15,6 @@ void Hierarchy::Initialize()
 	// Top object have no parent, so make a dummy weak pointer to act as a nullptr.
 	topObject = std::make_shared<BaseObject>(std::weak_ptr<BaseObject>());
 	topObject->selfRef = topObject;
-
-	auto cameraHolder = topObject->Instantiate().lock();
-	cameraHolder->AddComponent<Camera>();
-	cameraHolder->SetLocalPosition(glm::vec3(0, 0, -5));
 }
 
 void Hierarchy::Update(float dt)
@@ -63,9 +58,6 @@ void Hierarchy::Render()
 
 	for (auto& c : Camera::GetCameras())
 	{
-		if (c.expired()) continue;
-		auto cam = c.lock();
-
 		for (auto& i : renderObjects)
 		{
 			auto program = GLShaderHolder::GetProgramById(i.first);
@@ -82,7 +74,7 @@ void Hierarchy::Render()
 				auto mesh = o.lock();
 
 				glBindVertexArray(mesh->GetVaoId());
-				mesh->RenderThis(cam.get(), program);
+				mesh->RenderThis(c, program);
 			}
 		}
 	}

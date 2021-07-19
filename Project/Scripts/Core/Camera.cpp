@@ -3,49 +3,69 @@
 #include "Camera.h"
 #include "App.h"
 
-bool Camera::CompareCameraPriority(std::weak_ptr<Camera> x, std::weak_ptr<Camera> y)
+std::vector<Camera*> cameras;
+
+bool CompareCameraPriority(Camera* x, Camera* y)
 {
-	return x.lock()->priority < y.lock()->priority;
+	return x->GetPriority() < y->GetPriority();
 }
 
-const std::vector<std::weak_ptr<Camera>>& Camera::GetCameras()
+const std::vector<Camera*>& Camera::GetCameras()
 {
 	return cameras;
 }
 
-Camera::Camera(std::weak_ptr<BaseObject> holder) : TypedComponent<Camera>(holder)
+Camera::Camera(std::weak_ptr<BaseObject> holder)
 {
 	priority = 0;
-
-	fov = 1.0472f;
-	near = 0.1f;
-	far = 1000.0f;
-	aspect = App::Instance()->GetWindowHolder()->GetAspect();
-	perspectiveMatrix = glm::perspectiveLH(fov, aspect, near, far);
+	this->holder = holder;
 
 	auto h = holder.lock();
-
+	holderId = h->GetId();
 	viewMatrix = glm::inverse(h->GetWorldTransform());
-	pvMatrix = perspectiveMatrix * viewMatrix;
+
+	App::Instance()->GetHierarchy()->RegisterAfterLoopCallback([this]()
+		{
+			cameras.push_back(this);
+			std::sort(cameras.begin(), cameras.end(), CompareCameraPriority);
+		});
 }
 
 Camera::~Camera()
 {
-}
+	for (auto i = 0; i < cameras.size(); i++)
+	{
+		const auto& c = cameras[i];
+		if (holderId != c->holderId)
+			continue;
 
-const glm::mat4& Camera::GetProjectionMatrix()
-{
-	return perspectiveMatrix;
+		cameras.erase(cameras.begin() + i);
+		break;
+	}
 }
 
 const glm::mat4& Camera::GetViewMatrix()
 {
-	if (transformChanged)
-		RecalculateTransform();
+	auto h = holder.lock();
+	if (holder.lock()->IsTransformChanged())
+	{
+		viewMatrix = glm::inverse(h->GetWorldTransform());
+	}
 
 	return viewMatrix;
 }
 
+void Camera::SetPriority(int p)
+{
+	priority = p;
+}
+
+int Camera::GetPriority()
+{
+	return priority;
+}
+
+/*
 void Camera::Start()
 {
 	cameras.push_back(GetSelfReference());
@@ -73,12 +93,6 @@ void Camera::Update(float dt)
 		holder.lock()->LookAt(0, 0, 0);
 }
 
-void Camera::SetPriority(int p)
-{
-	priority = p;
-	std::sort(cameras.begin(), cameras.end(), Camera::CompareCameraPriority);
-}
-
 void Camera::RecalculateTransform()
 {
 	transformChanged = false;
@@ -96,3 +110,4 @@ const glm::mat4& Camera::GetPVMatrix()
 
 	return pvMatrix;
 }
+*/

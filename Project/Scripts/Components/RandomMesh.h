@@ -14,6 +14,7 @@ private:
 	void RenderThis(Camera*, ShaderProgram*) override;
 public:
 	RandomMesh(std::weak_ptr<BaseObject>);
+
 	void SetVerticeData(const char* rboxCommand);
 };
 
