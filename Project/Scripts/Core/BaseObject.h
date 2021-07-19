@@ -1,11 +1,11 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 #include <memory>
 #include <vector>
 #include <unordered_map>
 #include <string>
-#include <glm/gtc/quaternion.hpp>
 #include "Component.h"
 #include "App.h"
 #include "IdHolder.h"
@@ -44,7 +44,6 @@ private:
 	glm::vec3 localScale;
 
 public:
-
 	BaseObject(std::weak_ptr<BaseObject>);
 
 	~BaseObject();
@@ -116,6 +115,8 @@ public:
 	}
 
 	void Update(float);
+
+	bool IsTransformChanged();
 
 	const glm::vec3 GetWorldPosition();
 	const glm::mat4& GetWorldTransform();

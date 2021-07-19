@@ -9,7 +9,7 @@ class BaseObject;
 /// <summary>
 /// Components will be watched by shared_ptr from it's holder BaseObject, and will be only exposed as weak_ptr.
 /// </summary>
-class Component : public virtual IdHolder
+class Component : public IdHolder
 {
 	friend BaseObject;
 private:

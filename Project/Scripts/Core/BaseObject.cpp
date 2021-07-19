@@ -101,6 +101,11 @@ void BaseObject::Update(float dt)
 	}
 }
 
+bool BaseObject::IsTransformChanged()
+{
+	return isTransformChanged;
+}
+
 void BaseObject::SetTransformChanged()
 {
 	isTransformChanged = true;
