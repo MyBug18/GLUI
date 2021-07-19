@@ -25,6 +25,7 @@ public:
 	void Initialize();
 	void Update(float dt);
 	void Render();
+	void AfterLoop();
 
 	std::shared_ptr<BaseObject> GetTopObject();
 

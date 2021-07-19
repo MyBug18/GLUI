@@ -1,4 +1,5 @@
 #pragma once
+
 #include "RandomManager.h"
 
 /// <summary>

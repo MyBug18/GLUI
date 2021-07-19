@@ -25,7 +25,10 @@ void Hierarchy::Initialize()
 void Hierarchy::Update(float dt)
 {
 	topObject->Update(dt);
+}
 
+void Hierarchy::AfterLoop()
+{
 	for (auto& f : afterLoopCallbacks)
 	{
 		f();

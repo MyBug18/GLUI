@@ -58,6 +58,7 @@ void App::Update()
 
 	hierarchy->Update(dt);
 	hierarchy->Render();
+	hierarchy->AfterLoop();
 	windowHolder->SwapBuffers();
 	glfwPollEvents();
 }
