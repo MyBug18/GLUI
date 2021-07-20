@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Scripts\Components\OrthogrphicCamera.cpp" />
     <ClCompile Include="Scripts\Components\PerspectiveCamera.cpp" />
     <ClCompile Include="Scripts\Components\SquareMesh.cpp" />
     <ClCompile Include="Scripts\Core\BaseObject.cpp" />
@@ -176,6 +177,7 @@
     <None Include="Resources\SquareMeshVert.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Scripts\Components\OrthographicCamera.h" />
     <ClInclude Include="Scripts\Components\PerspectiveCamera.h" />
     <ClInclude Include="Scripts\Components\SquareMesh.h" />
     <ClInclude Include="Scripts\Core\App.h" />

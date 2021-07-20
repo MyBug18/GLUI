@@ -57,6 +57,9 @@
     <ClCompile Include="Scripts\Components\PerspectiveCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scripts\Components\OrthogrphicCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RandomMeshVert.glsl">
@@ -112,6 +115,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scripts\Components\PerspectiveCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\Components\OrthographicCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
