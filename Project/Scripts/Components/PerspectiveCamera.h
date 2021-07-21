@@ -15,6 +15,7 @@ public:
 	~PerspectiveCamera();
 
 	const glm::mat4& GetProjectionMatrix() override;
+	void OnResizeWindow(int, int) override;
 };
 
 template <>

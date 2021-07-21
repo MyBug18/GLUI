@@ -6,13 +6,14 @@
 class OrthographicCamera : public TypedComponent<OrthographicCamera>, public Camera
 {
 private:
-	float width;
-	float height;
+	int width;
+	int height;
 public:
 	OrthographicCamera(std::weak_ptr<BaseObject>);
 	~OrthographicCamera();
 
 	const glm::mat4& GetProjectionMatrix() override;
+	void OnResizeWindow(int, int) override;
 };
 
 template <>

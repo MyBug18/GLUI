@@ -22,6 +22,7 @@ public:
 	void DestroyWindow();
 
 	void RegisterWindowResizeCallback(int, std::function<void(int, int)>);
+	void RemoveWindowResizeCallback(int);
 
 	int GetWidth();
 	int GetHeight();

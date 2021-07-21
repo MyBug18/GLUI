@@ -9,8 +9,7 @@ class Camera
 {
 private:
 	int priority;
-	int holderId;
-	std::weak_ptr<BaseObject> holder;
+	std::weak_ptr<BaseObject> cameraHolder;
 
 	glm::mat4 viewMatrix;
 protected:
@@ -24,6 +23,8 @@ public:
 
 	const glm::mat4& GetViewMatrix();
 	virtual const glm::mat4& GetProjectionMatrix() = 0;
+
+	virtual void OnResizeWindow(int, int) = 0;
 
 	void SetPriority(int);
 	int GetPriority();

@@ -18,36 +18,45 @@ const std::vector<Camera*>& Camera::GetCameras()
 Camera::Camera(std::weak_ptr<BaseObject> holder)
 {
 	priority = 0;
-	this->holder = holder;
+	this->cameraHolder = holder;
 
-	auto h = holder.lock();
-	holderId = h->GetId();
-	viewMatrix = glm::inverse(h->GetWorldTransform());
+	viewMatrix = glm::inverse(holder.lock()->GetWorldTransform());
 
 	App::Instance()->GetHierarchy()->RegisterAfterLoopCallback([this]()
 		{
 			cameras.push_back(this);
 			std::sort(cameras.begin(), cameras.end(), CompareCameraPriority);
 		});
+
+	App::Instance()->GetWindowHolder()->RegisterWindowResizeCallback(holder.lock()->GetId(), [&](int w, int h)
+		{
+			isProjectionChanged = true;
+			OnResizeWindow(w, h);
+		});
+
+	isProjectionChanged = true;
 }
 
 Camera::~Camera()
 {
+	auto holderId = cameraHolder.lock()->GetId();
 	for (auto i = 0; i < cameras.size(); i++)
 	{
 		const auto& c = cameras[i];
-		if (holderId != c->holderId)
+		if (holderId != c->cameraHolder.lock()->GetId())
 			continue;
 
 		cameras.erase(cameras.begin() + i);
 		break;
 	}
+
+	App::Instance()->GetWindowHolder()->RemoveWindowResizeCallback(cameraHolder.lock()->GetId());
 }
 
 const glm::mat4& Camera::GetViewMatrix()
 {
-	auto h = holder.lock();
-	if (holder.lock()->IsTransformChanged())
+	auto h = cameraHolder.lock();
+	if (cameraHolder.lock()->IsTransformChanged())
 	{
 		viewMatrix = glm::inverse(h->GetWorldTransform());
 	}

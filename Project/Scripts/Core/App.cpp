@@ -23,7 +23,7 @@ void App::Initialize()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 	hierarchy->Initialize();
-	timeStamp = glfwGetTime();
+	timeStamp = (float)glfwGetTime();
 }
 
 App::~App()
@@ -52,7 +52,7 @@ bool App::ShouldClose()
 
 void App::Update()
 {
-	auto now = glfwGetTime();
+	auto now = (float)glfwGetTime();
 	auto dt = now - timeStamp;
 	timeStamp = now;
 

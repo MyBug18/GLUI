@@ -19,3 +19,8 @@ const glm::mat4& PerspectiveCamera::GetProjectionMatrix()
 
 	return projectionMatrix;
 }
+
+void PerspectiveCamera::OnResizeWindow(int w, int h)
+{
+	aspect = (float)w / h;
+}

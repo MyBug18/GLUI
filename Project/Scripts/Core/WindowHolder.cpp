@@ -5,6 +5,7 @@ std::unordered_map<int, std::function<void(int, int)>> windowResizeCallbacks;
 
 void CallWindowResizeCallbacks(GLFWwindow*, int w, int h)
 {
+	glViewport(0, 0, w, h);
 	for (auto& f : windowResizeCallbacks)
 		f.second(w, h);
 }
@@ -50,6 +51,11 @@ void WindowHolder::DestroyWindow()
 void WindowHolder::RegisterWindowResizeCallback(int key, std::function<void(int, int)> f)
 {
 	windowResizeCallbacks[key] = f;
+}
+
+void WindowHolder::RemoveWindowResizeCallback(int key)
+{
+	windowResizeCallbacks.erase(key);
 }
 
 int WindowHolder::GetWidth()
