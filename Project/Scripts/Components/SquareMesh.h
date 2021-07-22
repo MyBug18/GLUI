@@ -7,7 +7,7 @@
 class SquareMesh : public TypedComponent<SquareMesh>, public Mesh
 {
 private:
-	GLuint verticesVbo;
+	GLuint verticesVbo, trianglesVbo;
 
 	glm::vec2 downLeft, upRight;
 

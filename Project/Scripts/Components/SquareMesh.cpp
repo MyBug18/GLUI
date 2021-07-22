@@ -5,13 +5,22 @@ int triangles[] = { 0, 1, 2, 1, 3, 2 };
 SquareMesh::SquareMesh(std::weak_ptr<BaseObject> holder) : TypedComponent<SquareMesh>(holder), Mesh()
 {
 	verticesVbo = 0;
-	SetSquareData(-1, -1, 1, 1);
+	trianglesVbo = 0;
+
+	downLeft = glm::vec2(0, 0);
+	upRight = glm::vec2(0, 0);
 }
 
 void SquareMesh::Start()
 {
 	SetShaderData(GL_VERTEX_SHADER, "SquareMeshVert.glsl");
 	SetShaderData(GL_FRAGMENT_SHADER, "RandomMeshFrag.glsl");
+
+	glBindVertexArray(vaoId);
+
+	glGenBuffers(1, &trianglesVbo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, trianglesVbo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * 6, triangles, GL_STATIC_DRAW);
 }
 
 void SquareMesh::Update(float dt)
@@ -27,19 +36,14 @@ void SquareMesh::SetSquareData(float downLeftX, float downLeftY, float upRightX,
 	glBindVertexArray(vaoId);
 
 	if (verticesVbo == 0)
-	{
 		glGenBuffers(1, &verticesVbo);
-		glBindBuffer(GL_ARRAY_BUFFER, verticesVbo);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
-		glEnableVertexAttribArray(0);
-	}
-	else
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, verticesVbo);
-	}
+	glBindBuffer(GL_ARRAY_BUFFER, verticesVbo);
 
-	float vertices[12] = { downLeftX, downLeftY, downLeftX, upRightY, upRightX, downLeftY, downLeftX, upRightY, upRightX, upRightY, upRightX, downLeftY };
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 12, vertices, GL_STATIC_DRAW);
+	float vertices[8] = { downLeftX, downLeftY, downLeftX, upRightY, upRightX, downLeftY, upRightX, upRightY };
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 8, vertices, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(0);
 }
 
 void SquareMesh::RenderThis(Camera* cam, ShaderProgram* program)
@@ -49,5 +53,6 @@ void SquareMesh::RenderThis(Camera* cam, ShaderProgram* program)
 	program->SetMatrix4x4("proj_matrix", cam->GetProjectionMatrix(), false);
 	program->SetMatrix4x4("mv_matrix", cam->GetViewMatrix() * holder.lock()->GetWorldTransform(), false);
 
-	glDrawArrays(GL_TRIANGLES, 0, 20);
+	// glDrawArrays(GL_TRIANGLES, 0, 20);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 }
