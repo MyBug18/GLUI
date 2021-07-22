@@ -94,8 +94,7 @@ void RandomMesh::RenderThis(Camera* cam, ShaderProgram* program)
 {
 	if (holder.expired()) return;
 
-	program->SetMatrix4x4("proj_matrix", cam->GetProjectionMatrix(), false);
-	program->SetMatrix4x4("mv_matrix", cam->GetViewMatrix() * holder.lock()->GetWorldTransform(), false);
+	program->SetMatrix4x4("model_matrix", holder.lock()->GetWorldTransform(), false);
 
 	glDrawArrays(GL_TRIANGLES, 0, vertices.size() / 3);
 }

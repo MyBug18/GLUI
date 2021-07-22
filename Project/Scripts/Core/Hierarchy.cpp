@@ -74,6 +74,9 @@ void Hierarchy::Render()
 				auto mesh = o.lock();
 
 				glBindVertexArray(mesh->GetVaoId());
+
+				// Every vertex shader should include PV matrix, to set it uniformly here.
+				program->SetMatrix4x4("pv_matrix", c->GetProjectionMatrix() * c->GetViewMatrix(), false);
 				mesh->RenderThis(c, program);
 			}
 		}
