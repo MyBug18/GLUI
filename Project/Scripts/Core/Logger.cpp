@@ -1,5 +1,10 @@
 #include "Logger.h"
 
+void Logger::PrintLog(std::string s)
+{
+	std::cout << s << std::endl;
+}
+
 void Logger::PrintShaderLog(GLuint shader)
 {
 	auto len = 0;
