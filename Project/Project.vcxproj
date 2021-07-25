@@ -183,6 +183,7 @@
     <ClInclude Include="Scripts\Core\App.h" />
     <ClInclude Include="Scripts\Core\Component.h" />
     <ClInclude Include="Scripts\Core\IdHolder.h" />
+    <ClInclude Include="Scripts\Core\Loadable.h" />
     <ClInclude Include="Scripts\Core\RandomManager.h" />
     <ClInclude Include="Scripts\Core\Hierarchy.h" />
     <ClInclude Include="Scripts\Core\GLShaderHolder.h" />
