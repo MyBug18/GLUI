@@ -14,7 +14,7 @@ class Component;
 class Hierarchy;
 class App;
 
-template <typename T>
+template <class T>
 class TypedComponent;
 
 class BaseObject : public IdHolder
@@ -85,7 +85,7 @@ public:
 		auto c = components.find(name);
 		if (c != components.end())
 		{
-			return std::dynamic_pointer_cast<T>(c->second);
+			return std::static_pointer_cast<T>(c->second);
 		}
 
 		auto ptr = std::make_shared<T>(GetSelfReference());
@@ -93,7 +93,7 @@ public:
 
 		App::Instance()->GetHierarchy()->RegisterAfterLoopCallback([&, name, ptr]()
 			{
-				auto cPtr = std::dynamic_pointer_cast<Component>(ptr);
+				auto cPtr = std::static_pointer_cast<Component>(ptr);
 
 				components[name] = cPtr;
 				cPtr->Start();
@@ -111,7 +111,7 @@ public:
 			return std::weak_ptr<T>();
 		}
 
-		return std::dynamic_pointer_cast<T>(c->second);
+		return std::static_pointer_cast<T>(c->second);
 	}
 
 	void Update(float);
