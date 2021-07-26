@@ -2,6 +2,9 @@
 #include <algorithm>
 #include "Camera.h"
 #include "App.h"
+#include "Hierarchy.h"
+#include "WindowHolder.h"
+#include "BaseObject.h"
 
 std::vector<Camera*> cameras;
 

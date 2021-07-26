@@ -2,6 +2,8 @@
 #include <GLFW/glfw3.h>
 #include <map>
 #include "Scripts/Core/App.h"
+#include "Scripts/Core/Hierarchy.h"
+#include "Scripts/Core/WindowHolder.h"
 #include "Scripts/Components/RandomMesh.h"
 #include "Scripts/Components/SquareMesh.h"
 #include "Scripts/Components/PerspectiveCamera.h"

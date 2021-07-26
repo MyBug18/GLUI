@@ -1,9 +1,14 @@
+#include <GL/glew.h>
 #include <libqhullcpp/Qhull.h>
 #include <libqhullcpp/QhullVertex.h>
 #include <libqhullcpp/QhullVertexSet.h>
 #include <libqhullcpp/QhullFacetList.h>
 #include <libqhullcpp/RboxPoints.h>
 #include "RandomMesh.h"
+#include "../Core/App.h"
+#include "../Core/Hierarchy.h"
+#include "../Core/Camera.h"
+#include "../Core/GLShaderHolder.h"
 
 RandomMesh::RandomMesh(std::weak_ptr<BaseObject> holder) : TypedComponent<RandomMesh>(holder), Mesh()
 {

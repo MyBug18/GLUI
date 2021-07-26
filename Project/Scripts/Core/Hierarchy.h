@@ -1,8 +1,6 @@
 #pragma once
 
 #include <functional>
-#include "GLShaderHolder.h"
-#include "BaseObject.h"
 
 class BaseObject;
 class Mesh;

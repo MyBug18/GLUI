@@ -4,10 +4,14 @@
 #include <vector>
 #include <map>
 #include <memory>
-#include "GLShaderHolder.h"
-#include "Camera.h"
+#include <string>
+
+typedef unsigned int GLuint;
 
 class BaseObject;
+class Camera;
+class Shader;
+class ShaderProgram;
 
 class Mesh
 {

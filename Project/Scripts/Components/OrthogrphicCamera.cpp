@@ -1,4 +1,6 @@
 #include "OrthographicCamera.h"
+#include "../Core/App.h"
+#include "../Core/WindowHolder.h"
 
 OrthographicCamera::OrthographicCamera(std::weak_ptr<BaseObject> holder) : TypedComponent<OrthographicCamera>(holder), Camera(holder)
 {

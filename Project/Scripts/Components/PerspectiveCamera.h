@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Core/Camera.h"
 #include "../Core/Component.h"
+#include "../Core/Camera.h"
 
 class PerspectiveCamera : public TypedComponent<PerspectiveCamera>, public Camera
 {

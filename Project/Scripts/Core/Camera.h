@@ -3,7 +3,8 @@
 #include <glm/glm.hpp>
 #include <memory>
 #include <vector>
-#include "BaseObject.h"
+
+class BaseObject;
 
 class Camera
 {

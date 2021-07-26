@@ -161,6 +161,7 @@
     <ClCompile Include="Scripts\Core\Camera.cpp" />
     <ClCompile Include="Scripts\Core\Hierarchy.cpp" />
     <ClCompile Include="Scripts\Core\GLShaderHolder.cpp" />
+    <ClCompile Include="Scripts\Core\IdHolder.cpp" />
     <ClCompile Include="Scripts\Core\Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scripts\Core\Mesh.cpp" />

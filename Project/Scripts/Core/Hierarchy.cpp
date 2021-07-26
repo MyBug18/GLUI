@@ -1,6 +1,8 @@
 #include "Hierarchy.h"
-#include "GLShaderHolder.h"
 #include "Mesh.h"
+#include "BaseObject.h"
+#include "GLShaderHolder.h"
+#include "Camera.h"
 
 Hierarchy::Hierarchy()
 {

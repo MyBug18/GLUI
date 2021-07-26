@@ -1,4 +1,6 @@
 #include "PerspectiveCamera.h"
+#include "../Core/App.h"
+#include "../Core/WindowHolder.h"
 
 PerspectiveCamera::PerspectiveCamera(std::weak_ptr<BaseObject> holder) : TypedComponent<PerspectiveCamera>(holder), Camera(holder)
 {

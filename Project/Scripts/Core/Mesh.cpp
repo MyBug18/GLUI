@@ -1,7 +1,9 @@
+#include <GL/glew.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include "Mesh.h"
 #include "App.h"
 #include "GLShaderHolder.h"
+#include "Camera.h"
 
 Mesh::Mesh()
 {

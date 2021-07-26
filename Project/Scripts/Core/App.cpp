@@ -1,4 +1,8 @@
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "App.h"
+#include "Hierarchy.h"
+#include "WindowHolder.h"
 
 std::unique_ptr<App> App::instance = std::make_unique<App>();
 

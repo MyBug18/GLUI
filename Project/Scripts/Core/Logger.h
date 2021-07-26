@@ -1,7 +1,8 @@
 #pragma once
 
-#include <GL/glew.h>
 #include <iostream>
+
+typedef unsigned int GLuint;
 
 class Logger
 {

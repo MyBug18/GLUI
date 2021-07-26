@@ -1,4 +1,8 @@
+#include <GL/glew.h>
 #include "SquareMesh.h"
+#include "../Core/App.h"
+#include "../Core/Hierarchy.h"
+#include "../Core/GLShaderHolder.h"
 
 int triangles[] = { 0, 1, 2, 1, 3, 2 };
 

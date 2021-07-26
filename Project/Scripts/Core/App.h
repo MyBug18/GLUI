@@ -1,10 +1,9 @@
 #pragma once
 
 #include <memory>
-#include "Hierarchy.h"
-#include "WindowHolder.h"
 
 class Hierarchy;
+class WindowHolder;
 
 class App
 {

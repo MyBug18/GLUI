@@ -7,7 +7,6 @@
 #include <unordered_map>
 #include <string>
 #include "Component.h"
-#include "App.h"
 #include "IdHolder.h"
 
 class Component;

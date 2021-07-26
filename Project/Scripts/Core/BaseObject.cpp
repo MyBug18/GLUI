@@ -1,7 +1,7 @@
-#include <cstdlib>
 #include <glm/gtc/matrix_transform.hpp>
 #include "BaseObject.h"
 #include "App.h"
+#include "Hierarchy.h"
 #include "Rotation.h"
 
 BaseObject::BaseObject(std::weak_ptr<BaseObject> parent)
