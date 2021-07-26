@@ -8,17 +8,17 @@
 class IdHolder
 {
 private:
-	unsigned int id;
+	unsigned long id;
 protected:
 	IdHolder()
 	{
-		id = RandomManager::GetRandomInt();
+		id = RandomManager::GetRandomLong();
 	}
 	virtual ~IdHolder()
 	{
 	}
 public:
-	unsigned int GetId()
+	unsigned long GetId()
 	{
 		return id;
 	}

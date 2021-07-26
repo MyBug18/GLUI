@@ -21,8 +21,8 @@ public:
 	void SwapBuffers();
 	void DestroyWindow();
 
-	void RegisterWindowResizeCallback(int, std::function<void(int, int)>);
-	void RemoveWindowResizeCallback(int);
+	void RegisterWindowResizeCallback(unsigned long, std::function<void(int, int)>);
+	void RemoveWindowResizeCallback(unsigned long);
 
 	int GetWidth();
 	int GetHeight();

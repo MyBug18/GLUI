@@ -1,7 +1,7 @@
 #include <unordered_map>
 #include "WindowHolder.h"
 
-std::unordered_map<int, std::function<void(int, int)>> windowResizeCallbacks;
+std::unordered_map<unsigned long, std::function<void(int, int)>> windowResizeCallbacks;
 
 void CallWindowResizeCallbacks(GLFWwindow*, int w, int h)
 {
@@ -48,12 +48,12 @@ void WindowHolder::DestroyWindow()
 	glfwDestroyWindow(window);
 }
 
-void WindowHolder::RegisterWindowResizeCallback(int key, std::function<void(int, int)> f)
+void WindowHolder::RegisterWindowResizeCallback(unsigned long key, std::function<void(int, int)> f)
 {
 	windowResizeCallbacks[key] = f;
 }
 
-void WindowHolder::RemoveWindowResizeCallback(int key)
+void WindowHolder::RemoveWindowResizeCallback(unsigned long key)
 {
 	windowResizeCallbacks.erase(key);
 }

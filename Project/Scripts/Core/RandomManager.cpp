@@ -7,3 +7,8 @@ unsigned int RandomManager::GetRandomInt()
 {
 	return gen();
 }
+
+unsigned long RandomManager::GetRandomLong()
+{
+	return gen();
+}
