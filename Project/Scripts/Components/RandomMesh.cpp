@@ -95,7 +95,7 @@ void RandomMesh::SetVerticeData(const char* rboxCommand)
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * vertices.size(), vertices.data(), GL_STATIC_DRAW);
 }
 
-void RandomMesh::RenderThis(Camera* cam, ShaderProgram* program)
+void RandomMesh::RenderThis(ShaderProgram* program)
 {
 	if (holder.expired()) return;
 

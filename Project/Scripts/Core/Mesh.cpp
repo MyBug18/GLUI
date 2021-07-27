@@ -3,7 +3,6 @@
 #include "Mesh.h"
 #include "App.h"
 #include "Shader.h"
-#include "Camera.h"
 
 Mesh::Mesh()
 {

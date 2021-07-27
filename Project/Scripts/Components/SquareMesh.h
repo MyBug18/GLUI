@@ -12,7 +12,7 @@ private:
 
 	void Start() override;
 	void Update(float) override;
-	void RenderThis(Camera*, ShaderProgram*) override;
+	void RenderThis(ShaderProgram*) override;
 public:
 	SquareMesh(std::weak_ptr<BaseObject>);
 

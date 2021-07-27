@@ -50,7 +50,7 @@ void SquareMesh::SetSquareData(float downLeftX, float downLeftY, float upRightX,
 	glEnableVertexAttribArray(0);
 }
 
-void SquareMesh::RenderThis(Camera* cam, ShaderProgram* program)
+void SquareMesh::RenderThis(ShaderProgram* program)
 {
 	if (holder.expired()) return;
 

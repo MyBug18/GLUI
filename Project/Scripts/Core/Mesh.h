@@ -9,7 +9,6 @@
 typedef unsigned int GLuint;
 
 class BaseObject;
-class Camera;
 class Shader;
 class ShaderProgram;
 
@@ -35,5 +34,5 @@ public:
 
 	GLuint GetVaoId();
 
-	virtual void RenderThis(Camera*, ShaderProgram*) { }
+	virtual void RenderThis(ShaderProgram*) { }
 };

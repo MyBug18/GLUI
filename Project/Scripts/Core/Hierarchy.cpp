@@ -77,7 +77,7 @@ void Hierarchy::Render()
 
 				// Every vertex shader should include PV matrix, to set it uniformly here.
 				program->SetMatrix4x4("pv_matrix", c->GetProjectionMatrix() * c->GetViewMatrix(), false);
-				mesh->RenderThis(c, program);
+				mesh->RenderThis(program);
 			}
 		}
 	}

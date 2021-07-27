@@ -11,7 +11,7 @@ private:
 
 	void Start() override;
 	void Update(float) override;
-	void RenderThis(Camera*, ShaderProgram*) override;
+	void RenderThis(ShaderProgram*) override;
 public:
 	RandomMesh(std::weak_ptr<BaseObject>);
 
