@@ -4,6 +4,7 @@
 
 class BaseObject;
 class Mesh;
+class ShaderProgram;
 
 class Hierarchy
 {
@@ -15,7 +16,7 @@ private:
 
 	std::vector<std::function<void()>> afterLoopCallbacks;
 
-	std::unordered_map<int, std::vector<std::weak_ptr<Mesh>>> renderObjects;
+	std::unordered_map<ShaderProgram*, std::vector<std::weak_ptr<Mesh>>> renderObjects;
 public:
 	Hierarchy();
 	~Hierarchy();

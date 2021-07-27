@@ -1,4 +1,5 @@
 #include <GL/glew.h>
+#include <iostream>
 #include "Logger.h"
 
 void Logger::PrintLog(std::string s)

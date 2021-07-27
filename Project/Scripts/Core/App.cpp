@@ -25,7 +25,7 @@ void App::Initialize()
 	if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
 
 	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
+	glDepthFunc(GL_LESS);
 	hierarchy->Initialize();
 	timeStamp = (float)glfwGetTime();
 }

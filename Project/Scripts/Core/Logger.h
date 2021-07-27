@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 typedef unsigned int GLuint;
 
 class Logger

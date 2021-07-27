@@ -126,6 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>false</EnableModules>
+      <RuntimeTypeInfo>No</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,6 +145,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>false</EnableModules>
+      <RuntimeTypeInfo>No</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,7 +162,6 @@
     <ClCompile Include="Scripts\Core\BaseObject.cpp" />
     <ClCompile Include="Scripts\Core\Camera.cpp" />
     <ClCompile Include="Scripts\Core\Hierarchy.cpp" />
-    <ClCompile Include="Scripts\Core\GLShaderHolder.cpp" />
     <ClCompile Include="Scripts\Core\IdHolder.cpp" />
     <ClCompile Include="Scripts\Core\Logger.cpp" />
     <ClCompile Include="main.cpp" />
@@ -169,6 +170,8 @@
     <ClCompile Include="Scripts\Core\RandomManager.cpp" />
     <ClCompile Include="Scripts\Core\Rotation.cpp" />
     <ClCompile Include="Scripts\Core\App.cpp" />
+    <ClCompile Include="Scripts\Core\Shader.cpp" />
+    <ClCompile Include="Scripts\Core\ShaderProgram.cpp" />
     <ClCompile Include="Scripts\Core\WindowHolder.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,13 +190,15 @@
     <ClInclude Include="Scripts\Core\Loadable.h" />
     <ClInclude Include="Scripts\Core\RandomManager.h" />
     <ClInclude Include="Scripts\Core\Hierarchy.h" />
-    <ClInclude Include="Scripts\Core\GLShaderHolder.h" />
     <ClInclude Include="Scripts\Core\Logger.h" />
     <ClInclude Include="Scripts\Core\Mesh.h" />
     <ClInclude Include="Scripts\Components\RandomMesh.h" />
+    <ClInclude Include="Scripts\Core\ResourceHolder.h" />
     <ClInclude Include="Scripts\Core\Rotation.h" />
     <ClInclude Include="Scripts\Core\Camera.h" />
     <ClInclude Include="Scripts\Core\BaseObject.h" />
+    <ClInclude Include="Scripts\Core\Shader.h" />
+    <ClInclude Include="Scripts\Core\ShaderProgram.h" />
     <ClInclude Include="Scripts\Core\WindowHolder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

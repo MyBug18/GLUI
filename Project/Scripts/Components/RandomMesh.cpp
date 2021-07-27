@@ -8,7 +8,7 @@
 #include "../Core/App.h"
 #include "../Core/Hierarchy.h"
 #include "../Core/Camera.h"
-#include "../Core/GLShaderHolder.h"
+#include "../Core/ShaderProgram.h"
 
 RandomMesh::RandomMesh(std::weak_ptr<BaseObject> holder) : TypedComponent<RandomMesh>(holder), Mesh()
 {

@@ -19,7 +19,8 @@ const glm::mat4& OrthographicCamera::GetProjectionMatrix()
 	{
 		auto w = (float)width;
 		auto h = (float)height;
-		projectionMatrix = glm::orthoLH<float>(-w / 2, w / 2, -h / 2, h / 2, 0.1f, 1000);
+		projectionMatrix = glm::orthoLH<float>(-w / 2, w / 2, -h / 2, h / 2, -1000, 1000);
+		auto a = static_cast<float>(5);
 	}
 
 	return projectionMatrix;

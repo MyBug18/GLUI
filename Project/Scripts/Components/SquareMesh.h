@@ -1,6 +1,5 @@
 #pragma once
 
-#include <glm/glm.hpp>
 #include "../Core/Component.h"
 #include "../Core/Mesh.h"
 

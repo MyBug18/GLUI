@@ -2,7 +2,7 @@
 #include "SquareMesh.h"
 #include "../Core/App.h"
 #include "../Core/Hierarchy.h"
-#include "../Core/GLShaderHolder.h"
+#include "../Core/ShaderProgram.h"
 
 int triangles[] = { 0, 1, 2, 1, 3, 2 };
 

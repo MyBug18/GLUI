@@ -17,17 +17,16 @@ int main(void)
 	auto top = app->GetHierarchy()->GetTopObject();
 
 	auto cameraHolder = top->Instantiate().lock();
-	//cameraHolder->AddComponent<PerspectiveCamera>();
 	cameraHolder->AddComponent<OrthographicCamera>();
 	cameraHolder->SetLocalPosition(glm::vec3(0, 0, -5));
 
-	auto childDepth1 = top->Instantiate().lock();
-	childDepth1->SetScale(360, 360, 360);
+	auto child1 = top->Instantiate().lock();
+	child1->SetScale(360, 360, 360);
+	child1->AddComponent<RandomMesh>().lock()->SetVerticeData("l 15");
 
-	// auto mesh1 = childDepth1->AddComponent<RandomMesh>().lock();
-	// mesh1->SetVerticeData("l 10");
-	auto mesh1 = childDepth1->AddComponent<SquareMesh>().lock();
-	mesh1->SetSquareData(-1, -1, 1, 1);
+	auto child2 = top->Instantiate().lock();
+	child2->SetScale(180, 180, 180);
+	child2->AddComponent<SquareMesh>().lock()->SetSquareData(-1, -1, 1, 1);
 
 	while (!app->ShouldClose())
 	{

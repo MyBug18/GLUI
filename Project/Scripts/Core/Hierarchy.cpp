@@ -1,8 +1,9 @@
+#include <GL/glew.h>
 #include "Hierarchy.h"
 #include "Mesh.h"
 #include "BaseObject.h"
-#include "GLShaderHolder.h"
 #include "Camera.h"
+#include "ShaderProgram.h"
 
 Hierarchy::Hierarchy()
 {
@@ -48,9 +49,9 @@ void Hierarchy::AddRenderObject(std::weak_ptr<Mesh> meshRef)
 {
 	auto ptr = meshRef.lock();
 
-	auto program = GLShaderHolder::LoadProgram(ptr->GetShaderInfo());
+	auto program = ShaderProgram::GetShaderProgram(ptr->GetShaders());
 
-	renderObjects[program->GetProgramId()].push_back(meshRef);
+	renderObjects[program].push_back(meshRef);
 }
 
 void Hierarchy::Render()
@@ -62,11 +63,8 @@ void Hierarchy::Render()
 	{
 		for (auto& i : renderObjects)
 		{
-			auto program = GLShaderHolder::GetProgramById(i.first);
-			auto programId = program->GetProgramId();
-			if (programId == 0) continue;
-
-			glUseProgram(programId);
+			auto& program = i.first;
+			program->Use();
 
 			for (auto& o : i.second)
 			{

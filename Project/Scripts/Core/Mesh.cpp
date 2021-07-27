@@ -2,7 +2,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "Mesh.h"
 #include "App.h"
-#include "GLShaderHolder.h"
+#include "Shader.h"
 #include "Camera.h"
 
 Mesh::Mesh()
@@ -18,7 +18,7 @@ Mesh::~Mesh()
 
 void Mesh::SetShaderData(int shaderType, std::string shaderPath)
 {
-	shaders[shaderType] = GLShaderHolder::LoadShader(shaderType, shaderPath);
+	shaders[shaderType] = Shader::LoadShader(shaderType, shaderPath);
 }
 
 void Mesh::SetLayer(int l)
@@ -26,9 +26,14 @@ void Mesh::SetLayer(int l)
 	layer = l;
 }
 
-const std::map<int, Shader*>& Mesh::GetShaderInfo()
+std::vector<Shader*> Mesh::GetShaders()
 {
-	return shaders;
+	std::vector<Shader*> result;
+
+	for (auto& i : shaders)
+		result.push_back(i.second);
+
+	return result;
 }
 
 GLuint Mesh::GetVaoId()

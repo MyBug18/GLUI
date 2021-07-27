@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <memory>
 #include <string>
 
@@ -25,13 +25,13 @@ protected:
 
 	GLuint vaoId;
 
-	std::map<int, Shader*> shaders;
+	std::unordered_map<int, Shader*> shaders;
 	int layer;
 public:
 	void SetShaderData(int, std::string);
 	void SetLayer(int);
 
-	const std::map<int, Shader*>& GetShaderInfo();
+	std::vector<Shader*> GetShaders();
 
 	GLuint GetVaoId();
 
